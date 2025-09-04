@@ -2,18 +2,10 @@
 node_modules/
 /.pnp
 .pnp.js
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-package-lock.json
-yarn.lock
 
 # Production build
 /build
 /dist
-*.tgz
-*.tar.gz
 
 # Environment variables
 .env
@@ -22,16 +14,21 @@ yarn.lock
 .env.test.local
 .env.production.local
 
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# Coverage directory
+# Coverage directory used by tools like istanbul
 coverage/
 *.lcov
-.nyc_output
 
 # IDE files
 .vscode/
@@ -39,11 +36,6 @@ coverage/
 *.swp
 *.swo
 *~
-.project
-.classpath
-.settings/
-*.sublime-project
-*.sublime-workspace
 
 # OS generated files
 .DS_Store
@@ -53,7 +45,6 @@ coverage/
 .Trashes
 ehthumbs.db
 Thumbs.db
-desktop.ini
 
 # Firebase
 .firebase/
@@ -64,35 +55,15 @@ firebase-debug.*.log
 # Temporary files
 *.tmp
 *.temp
-*.log
-*.cache
-.cache/
+
+# Package manager files
+package-lock.json
+yarn.lock
 
 # Server files
 server.js
 start-server.bat
 package-server.json
 
-# React specific
-.eslintcache
-
-# Misc
-*.tsbuildinfo
-.npm
-.yarn-integrity
-.pnpm-debug.log*
-.next
-out/
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Local env files
-.env*.local
+.cursor/
+.aws/
