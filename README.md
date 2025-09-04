@@ -24,4 +24,4 @@ src/
 - React 18
 - Tailwind CSS
 - Framer Motion
-- React Intersection Observer# AfriFood
+- React Intersection Observer
