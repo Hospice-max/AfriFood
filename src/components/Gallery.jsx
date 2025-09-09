@@ -65,17 +65,23 @@ const Gallery = () => {
       category: 'entrees'
     },
     {
-      id: 11,
+      id: 10,
       src: '/images/plat-vegetarien-beninois.webp',
       alt: 'Plat végétarien béninois aux légumes locaux',
       category: 'entrees'
     },
     {
-      id: 10,
+      id: 11,
       src: '/images/vandzou-repas-du-benin-984x1024.webp',
-      alt: 'Vandzou - Dessert traditionnel béninois',
+      alt: 'Vandzou - Plat de resistance traditionnel béninois',
       category: 'desserts'
-    }
+    },
+    {
+      id: 12,
+      src: '/images/Trente_recettes_preparer_avance_entree_plat_dessert.jpg',
+      alt: 'Crème à la fraise - Dessert spécialité saveur béninois',
+      category: 'desserts'
+    },
   ];
 
   return (
@@ -155,7 +161,7 @@ const Gallery = () => {
             <p className="text-gray-600 mb-6">
               Découvrez nos dernières créations culinaires et l'ambiance de notre restaurant
             </p>
-            <button className="btn-primary">
+            <button className="btn-primary" onClick={() => window.open('https://www.instagram.com/', '_blank')}>
               @afrifood_restaurant
             </button>
           </div>

@@ -34,13 +34,12 @@ const Menu = () => {
         spicy: true,
         popular: true
       },
-      {
-        name: 'Riz aux Haricots',
-        description: 'Riz parfumé aux haricots blancs, spécialité béninoise savoureuse',
-        price: '2000 FCFA',
-        image: '/images/Riz-aux-haricots-blancs.webp',
-        popular: true
-      },
+        {
+        name: 'Abobo(Plat de Haricots)',
+        description: 'Haricots traditionnels mélangés avec farine et légumes frais',
+        price: '1500 FCFA',
+        image: '/images/Un_plat_de_haricot_(ou_Abobo_en_langue_locale_Fon_au_Bénin)_mélangé_avec_de_la_farine.webp'
+      },      
       {
         name: 'Télibo',
         description: 'Spécialité béninoise de poisson grillé aux épices traditionnelles',
@@ -52,17 +51,25 @@ const Menu = () => {
     ],
     entrees: [
       {
-        name: 'Aloko',
-        description: 'Bananes plantains frites, accompagnées de sauce pimentée',
-        price: '1000 FCFA',
-        image: '/images/Aloko.webp',
+        name: 'Brochettes de Mouton',
+        description: 'Brochettes marinées à la cacahuète, grillées selon la tradition',
+        price: '3200 FCFA',
+        image: '/images/Brochettes-de-mouton-marine-a-la-cacahuete.webp',
         spicy: true
       },
+      // {
+      //   name: 'Aloko',
+      //   description: 'Bananes plantains frites, accompagnées de sauce pimentée',
+      //   price: '1000 FCFA',
+      //   image: '/images/Aloko.webp',
+      //   spicy: true
+      // },    
       {
-        name: 'Abobo(Plat de Haricots)',
-        description: 'Haricots traditionnels mélangés avec farine et légumes frais',
-        price: '1500 FCFA',
-        image: '/images/Un_plat_de_haricot_(ou_Abobo_en_langue_locale_Fon_au_Bénin)_mélangé_avec_de_la_farine.webp'
+        name: 'Riz aux Haricots',
+        description: 'Riz parfumé aux haricots blancs, spécialité béninoise savoureuse',
+        price: '2000 FCFA',
+        image: '/images/Riz-aux-haricots-blancs.webp',
+        popular: true
       },
       {
         name: 'Plat Végétarien Béninois',
@@ -71,13 +78,13 @@ const Menu = () => {
         image: '/images/plat-vegetarien-beninois.webp'
       }
     ],
-    desserts: [
+    desserts: [      
       {
-        name: 'Brochettes de Mouton',
-        description: 'Brochettes marinées à la cacahuète, grillées selon la tradition',
-        price: '3200 FCFA',
-        image: '/images/Brochettes-de-mouton-marine-a-la-cacahuete.webp',
-        spicy: true
+        name: 'Crème à la fraise',
+        description: 'Spécialité catégorie dessert savoureux',
+        price: '2000 FCFA',
+        image: '/images/Trente_recettes_preparer_avance_entree_plat_dessert.jpg',
+        popular: true
       },
       {
         name: 'Spécialité Martine',

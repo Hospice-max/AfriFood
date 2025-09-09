@@ -161,7 +161,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Adresse</h4>
-                    <p className="text-gray-600">Cotonou, Akpakka<br />République du Bénin</p>
+                    <p className="text-gray-600">Cotonou, Akpakpa<br />République du Bénin</p>
                   </div>
                 </div>
                 
@@ -203,7 +203,7 @@ const Contact = () => {
                   width="100%"
                   height="100%"
                   className="rounded-lg"
-                  title="Localisation AfriFood Cotonou Akpakka"
+                  title="Localisation AfriFood Cotonou Akpakpa"
                 />
               </div>
             </div>

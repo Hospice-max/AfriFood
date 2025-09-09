@@ -6,7 +6,7 @@ const OrderModal = ({ isOpen, onClose, item }) => {
   const [orderData, setOrderData] = useState({
     name: '',
     phone: '',
-    address: 'Cotonou, Akpakka',
+    address: 'Cotonou, Akpakpa',
     quantity: 1,
     notes: ''
   });
@@ -32,7 +32,7 @@ const OrderModal = ({ isOpen, onClose, item }) => {
   };
 
   const resetModal = () => {
-    setOrderData({ name: '', phone: '', address: 'Cotonou, Akpakka', quantity: 1, notes: '' });
+    setOrderData({ name: '', phone: '', address: 'Cotonou, Akpakpa', quantity: 1, notes: '' });
     setOrderId(null);
     onClose();
   };
