@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { subscribeToOrders, subscribeToReservations, updateOrderStatus } from '../services/orderService';
 import { subscribeToNotifications, setupAutoNotifications, markAsRead } from '../services/notificationService';
+import { subscribeToNewsletterUpdates } from '../services/newsletterService';
+import AdminNewsletter from './AdminNewsletter';
 import { auth } from '../config/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import AdminLogin from './AdminLogin';
@@ -12,10 +14,11 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const [newsletter, setNewsletter] = useState([]);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [socket, setSocket] = useState(null);
   const [notifications, setNotifications] = useState([]);
-  const [stats, setStats] = useState({ totalOrders: 0, totalRevenue: 0, pendingOrders: 0, todayOrders: 0 });
+  const [stats, setStats] = useState({ totalOrders: 0, totalRevenue: 0, pendingOrders: 0, todayOrders: 0, totalSubscribers: 0 });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -62,10 +65,19 @@ const AdminDashboard = () => {
       setReservations(reservationsData);
     });
 
+    const unsubscribeNewsletter = subscribeToNewsletterUpdates((snapshot) => {
+      const newsletterData = snapshot.docs.map(doc => ({ docId: doc.id, ...doc.data() }));
+      setNewsletter(newsletterData);
+      
+      // Mettre à jour les stats
+      setStats(prev => ({ ...prev, totalSubscribers: newsletterData.length }));
+    });
+
     return () => {
       unsubscribeOrders();
       unsubscribeReservations();
       unsubscribeNotifications();
+      unsubscribeNewsletter();
     };
   }, [user]);
 
@@ -120,7 +132,8 @@ const AdminDashboard = () => {
             {[
               { id: 'dashboard', name: 'Tableau de bord', icon: '📊' },
               { id: 'orders', name: 'Commandes', icon: '🛍️', badge: orders.length },
-              { id: 'reservations', name: 'Réservations', icon: '📅', badge: reservations.length }
+              { id: 'reservations', name: 'Réservations', icon: '📅', badge: reservations.length },
+              { id: 'newsletter', name: 'Newsletter', icon: '📧', badge: newsletter.length }
             ].map((item) => (
               <motion.button
                 key={item.id}
@@ -243,7 +256,7 @@ const AdminDashboard = () => {
                   { title: 'Commandes totales', value: stats.totalOrders, icon: '📦', color: 'blue' },
                   { title: 'Revenus totaux', value: `${stats.totalRevenue.toLocaleString()} FCFA`, icon: '💰', color: 'green' },
                   { title: 'En attente', value: stats.pendingOrders, icon: '⏳', color: 'orange' },
-                  { title: 'Aujourd\'hui', value: stats.todayOrders, icon: '📅', color: 'purple' }
+                  { title: 'Abonnés Newsletter', value: stats.totalSubscribers, icon: '📧', color: 'purple' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.title}
@@ -408,6 +421,18 @@ const AdminDashboard = () => {
                   ))}
                 </div>
               </div>
+            </motion.div>
+          )}
+
+          {activeTab === 'newsletter' && (
+            <motion.div
+              key="newsletter"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <AdminNewsletter />
             </motion.div>
           )}
         </AnimatePresence>
