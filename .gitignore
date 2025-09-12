@@ -67,3 +67,18 @@ package-server.json
 
 .cursor/
 .aws/
+
+# Fichiers temporaires et cache
+*.log
+*.cache
+.temp/
+.tmp/
+
+# Fichiers système Windows
+*.lnk
+ehthumbs_vista.db
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*~

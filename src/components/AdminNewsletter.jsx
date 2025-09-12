@@ -29,7 +29,7 @@ export default function AdminNewsletter() {
 
 
   const deleteSubscriber = async (id) => {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer cet abonné ?')) return;
+    if (!window.confirm('Êtes-vous sûr de vouloir supprimer cet abonné ?')) return;
     
     try {
       await deleteDoc(doc(db, 'newsletter', id));
