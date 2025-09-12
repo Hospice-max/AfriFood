@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { subscribeToNewsletter } from '../services/newsletterService';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
   const socialLinks = [
     {
       name: 'Facebook',
@@ -61,6 +65,26 @@ const Footer = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsLoading(true);
+    setMessage('');
+    
+    const result = await subscribeToNewsletter(email);
+    
+    if (result.success) {
+      setMessage('✅ Inscription réussie ! Merci de votre confiance.');
+      setEmail('');
+    } else {
+      setMessage('❌ Erreur lors de l\'inscription. Veuillez réessayer.');
+    }
+    
+    setIsLoading(false);
+    setTimeout(() => setMessage(''), 5000);
   };
 
   return (
@@ -140,8 +164,8 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div>
-                  <p>123 Rue de la Cuisine Africaine</p>
-                  <p>75001 Paris, France</p>
+                  <p>123 Rue de la Cuisine Africaine/Akpakpa</p>
+                  <p>229 Cotonou, Bénin</p>
                 </div>
               </div>
               
@@ -176,20 +200,34 @@ const Footer = () => {
               offres spéciales et nouveaux plats
             </p>
             
-            <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Votre adresse email"
                 className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                required
               />
               <motion.button
-                className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                type="submit"
+                disabled={isLoading}
+                className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+                whileHover={{ scale: isLoading ? 1 : 1.05 }}
+                whileTap={{ scale: isLoading ? 1 : 0.95 }}
               >
-                S'inscrire
+                {isLoading ? 'Inscription...' : "S'inscrire"}
               </motion.button>
-            </div>
+            </form>
+            {message && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`mt-4 text-center ${message.includes('✅') ? 'text-green-400' : 'text-red-400'}`}
+              >
+                {message}
+              </motion.p>
+            )}
           </div>
         </motion.div>
 

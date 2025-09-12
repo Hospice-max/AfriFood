@@ -1,0 +1,22 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="50" cy="50" r="45" fill="url(#gradient1)" />
+  <path d="M20 30 Q50 10 80 30 Q50 50 20 30" fill="url(#gradient2)" />
+  <path d="M50 20 Q40 35 30 50 Q50 45 50 20 Q60 35 70 50 Q50 45 50 20" fill="#22c55e" />
+  <ellipse cx="50" cy="65" rx="25" ry="8" fill="url(#gradient3)" />
+</svg>
